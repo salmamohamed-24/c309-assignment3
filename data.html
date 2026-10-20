@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members Management</title>
+  <style>
+    :root {
+      --primary: #4338ca;
+      --bg-page: #f1f5f9;
+      --panel: #ffffff;
+      --border-color: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--bg-page);
+      color: #1e293b;
+      margin: 0;
+      padding: 35px 20px;
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .panel-head {
+      margin-bottom: 18px;
+    }
+
+    .panel-head h2 {
+      margin: 0 0 6px 0;
+      font-size: 24px;
+    }
+
+    .panel-head p {
+      margin: 0;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .action-bar {
+      background: var(--panel);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .filter-wrapper {
+      margin-bottom: 14px;
+    }
+
+    .filter-input {
+      width: 280px;
+      max-width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+      margin-right: 6px;
+    }
+
+    .btn:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    .btn-selected {
+      background: var(--primary) !important;
+      color: #fff !important;
+      border-color: var(--primary) !important;
+    }
+
+    .hide-element {
+      display: none;
+    }
+
+    .data-grid {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .data-grid th {
+      background: #f8fafc;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #475569;
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .data-grid td {
+      padding: 12px 14px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-grid tbody tr:hover {
+      background-color: #f8fafc;
+    }
+
+    .empty-cell {
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main-container">
+    <div class="panel-head">
+      <h2>Staff Directory</h2>
+      <p>Filter records dynamically or sort table columns</p>
+    </div>
+
+    <div class="action-bar">
+      <div class="filter-wrapper">
+        <label for="queryBox">Filter Records: </label>
+        <input type="text" id="queryBox" class="filter-input" placeholder="Search by name, city, dept...">
+        <button type="button" id="resetQueryBtn" class="btn hide-element">Clear</button>
+      </div>
+
+      <div>
+        <button type="button" class="btn" id="btnSortName">Member Name <span id="lblSortName">↕</span></button>
+        <button type="button" class="btn" id="btnSortAge">Member Age <span id="lblSortAge">↕</span></button>
+        <button type="button" class="btn" id="btnRestore">Restore Default</button>
+      </div>
+    </div>
+
+    <table class="data-grid">
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Location</th>
+          <th>Specialty</th>
+        </tr>
+      </thead>
+      <tbody id="gridDisplayBody"></tbody>
+    </table>
+  </div>
+
+  <script src="JS/data.js"></script>
+</body>
+
+</html>
