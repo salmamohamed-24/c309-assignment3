@@ -11,12 +11,12 @@ const staffRecords = [
   { id: 110, name: 'Reem Khairy', age: 24, location: 'Tanta', specialty: 'QA Analyst' }
 ];
 
-// App State
+
 let textFilter = '';
 let activeField = null;
 let sortDirection = 'asc';
 
-// Element Cache
+
 const gridBody = document.getElementById('gridDisplayBody');
 const filterInput = document.getElementById('queryBox');
 const btnClear = document.getElementById('resetQueryBtn');
@@ -38,7 +38,6 @@ function sanitize(val) {
 function refreshGrid() {
   const query = textFilter.trim().toLowerCase();
 
-  // 1. Filtering
   let visibleRecords = staffRecords.filter(item => {
     if (!query) return true;
     return (
@@ -49,7 +48,7 @@ function refreshGrid() {
     );
   });
 
-  // 2. Sorting
+
   if (activeField) {
     visibleRecords.sort((first, second) => {
       const a = first[activeField];
@@ -59,10 +58,10 @@ function refreshGrid() {
     });
   }
 
-  // 3. Clear button state
+  
   btnClear.classList.toggle('hide-element', textFilter.length === 0);
 
-  // 4. Render Rows
+ 
   gridBody.innerHTML = '';
 
   if (visibleRecords.length === 0) {
@@ -91,7 +90,7 @@ function setSorting(fieldKey) {
     sortDirection = 'asc';
   }
 
-  // Update UI indicators
+ 
   sortNameBtn.classList.toggle('btn-selected', activeField === 'name');
   sortAgeBtn.classList.toggle('btn-selected', activeField === 'age');
 
@@ -101,7 +100,7 @@ function setSorting(fieldKey) {
   refreshGrid();
 }
 
-// Handlers
+
 filterInput.addEventListener('input', (e) => {
   textFilter = e.target.value;
   refreshGrid();
@@ -129,5 +128,5 @@ restoreBtn.addEventListener('click', () => {
   refreshGrid();
 });
 
-// Initial boot
+
 refreshGrid();

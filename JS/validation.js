@@ -5,7 +5,7 @@ const fieldPass = document.getElementById('userPass');
 const fieldConfirm = document.getElementById('confirmPass');
 const fieldAge = document.getElementById('userAge');
 
-// Feedback Containers
+
 const alertBanner = document.getElementById('statusAlert');
 const toggleEye = document.getElementById('pwdToggleBtn');
 
@@ -17,7 +17,7 @@ const errorTargets = {
   age: document.getElementById('errUserAge')
 };
 
-// UI Modifier
+
 function applyFieldValidation(input, labelErr, msg) {
   const hasError = Boolean(msg);
   labelErr.textContent = msg || '';
@@ -28,7 +28,8 @@ function applyFieldValidation(input, labelErr, msg) {
   return !hasError;
 }
 
-// Validation Functions
+
+
 const checkName = () => {
   const val = fieldName.value.trim();
   if (!val) return applyFieldValidation(fieldName, errorTargets.name, 'Full name cannot be blank.');
@@ -73,7 +74,7 @@ function displayAlert(isSuccess, heading, description) {
   alertBanner.innerHTML = `<strong>${heading}</strong><div>${description}</div>`;
 }
 
-// Event Bindings
+
 fieldName.addEventListener('input', checkName);
 fieldEmail.addEventListener('input', checkEmail);
 fieldPass.addEventListener('input', () => {
